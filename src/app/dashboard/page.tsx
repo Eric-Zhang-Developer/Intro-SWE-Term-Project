@@ -27,21 +27,15 @@ export default async function DashboardPage() {
           <span>Home</span>
         </Link>
         <form action={logout}>
-          <button
-            type="submit"
-            className="btn btn-neutral btn-outline"
-          >
+          <button type="submit" className="btn btn-neutral btn-outline">
             <span>Log out</span>
           </button>
         </form>
       </div>
-      
-      
 
       <p className="mt-4 text-neutral-600">
-        You're logged in as: <span className="font-bold">{user.email}</span>.
+        You&apos;re logged in as: <span className="font-bold">{user.email}</span>.
       </p>
-
     </main>
   );
 }
