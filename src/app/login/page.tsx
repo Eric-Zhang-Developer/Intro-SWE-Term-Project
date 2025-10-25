@@ -25,11 +25,18 @@ export default function AuthPage() {
         if (error) throw error;
       } else {
         const { error } = await supabase.auth.signUp({ email, password });
-        if (error) throw error; 
+        if (error) throw error;
       }
       router.push("/dashboard");
-    } catch (e: any) {
-      setErr(e?.message ?? "Something went wrong");
+    } catch (e: unknown) {
+      let errorMessage = "Something went wrong. Please try again";
+
+      if (e instanceof Error) {
+        errorMessage = e.message;
+      } else if (typeof e === "string") {
+        errorMessage = e;
+      }
+      setErr(errorMessage);
     } finally {
       setBusy(false);
     }
@@ -55,14 +62,12 @@ export default function AuthPage() {
             >
               Sign up
             </button>
-        </div>
+          </div>
 
           {/* Optional info for signup */}
           {mode === "signup" && (
             <div role="alert" className="alert alert-soft mb-2">
-              <span>
-                Create an account with email & password.
-              </span>
+              <span>Create an account with email & password.</span>
             </div>
           )}
 
