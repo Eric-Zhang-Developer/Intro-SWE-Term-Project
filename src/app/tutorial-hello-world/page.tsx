@@ -1,6 +1,10 @@
+import BackToDashBoardLink from "@/components/back-to-dashboard-link";
+
 export default function TutorialHelloWorld() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
+      <BackToDashBoardLink></BackToDashBoardLink>
+
       <article className="max-w-5xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-md space-y-6">
         {/* Quest Title */}
         <h1 className="text-3xl md:text-4xl font-bold text-indigo-700 border-b pb-2 mb-6">
