@@ -33,9 +33,13 @@ export default async function DashboardPage() {
         </form>
       </div>
 
-      <p className="mt-4 text-neutral-600">
+      <p className="my-4 text-neutral-600">
         You&apos;re logged in as: <span className="font-bold">{user.email}</span>.
       </p>
+
+      <Link href="tutorial-hello-world" className="btn btn-neutral btn-outline">
+        Hello World Tutorial
+      </Link>
     </main>
   );
 }
