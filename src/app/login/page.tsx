@@ -30,12 +30,8 @@ export default function AuthPage() {
       router.push("/dashboard");
     } catch (e: unknown) {
       let errorMessage = "Something went wrong. Please try again";
-
-      if (e instanceof Error) {
-        errorMessage = e.message;
-      } else if (typeof e === "string") {
-        errorMessage = e;
-      }
+      if (e instanceof Error) errorMessage = e.message;
+      else if (typeof e === "string") errorMessage = e;
       setErr(errorMessage);
     } finally {
       setBusy(false);
@@ -43,83 +39,67 @@ export default function AuthPage() {
   }
 
   return (
-    <main className="min-h-dvh flex items-center justify-center p-6 bg-gray-900">
-      <div className="card w-full max-w-md bg-base-100 shadow-xl">
-        <div className="card-body">
-          {/* Tabs */}
-          <div className="join w-full mb-4">
-            <button
-              type="button"
-              onClick={() => setMode("login")}
-              className={`join-item btn w-1/2 ${mode === "login" ? "btn-primary" : "btn-ghost"}`}
-            >
-              Login
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode("signup")}
-              className={`join-item btn w-1/2 ${mode === "signup" ? "btn-primary" : "btn-ghost"}`}
-            >
-              Sign up
-            </button>
+    <main
+      className="min-h-dvh flex items-center justify-center bg-cover bg-center bg-no-repeat p-6 font-cinzel text-white"
+      style={{ backgroundImage: "url('/geminiblurred.png')" }}
+    >
+      <div className="w-full max-w-md bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.25)] p-8 transition-all">
+        <h1 className="text-4xl text-center mb-6 font-bold drop-shadow-lg">
+          {mode === "login" ? "Welcome Back" : "Create Your Account"}
+        </h1>
+
+        {err && (
+          <div className="mb-4 text-sm text-red-400 bg-red-900/40 border border-red-400/30 p-2 rounded-md">
+            {err}
+          </div>
+        )}
+
+        <form onSubmit={onSubmit} className="space-y-4 animate-fadeIn">
+          <div>
+            <label className="block mb-1 text-sm">Email</label>
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              className="w-full p-2 rounded-md bg-transparent border border-white/40 focus:border-indigo-400 focus:shadow-[0_0_12px_rgba(140,120,255,0.8)] outline-none transition"
+            />
           </div>
 
-          {/* Optional info for signup */}
-          {mode === "signup" && (
-            <div role="alert" className="alert alert-soft mb-2">
-              <span>Create an account with email & password.</span>
-            </div>
-          )}
+          <div>
+            <label className="block mb-1 text-sm">Password</label>
+            <input
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="w-full p-2 rounded-md bg-transparent border border-white/40 focus:border-indigo-400 focus:shadow-[0_0_12px_rgba(140,120,255,0.8)] outline-none transition"
+            />
+          </div>
 
-          {/* Error alert */}
-          {err && (
-            <div role="alert" className="alert alert-error mb-2">
-              <span>{err}</span>
-            </div>
-          )}
+          <button
+            type="submit"
+            disabled={busy}
+            className={`w-full py-2 rounded-md font-semibold mt-4 transition ${
+              busy
+                ? "bg-indigo-700/60 cursor-not-allowed"
+                : "bg-indigo-600 hover:bg-indigo-500 shadow-[0_0_20px_rgba(140,120,255,0.7)]"
+            }`}
+          >
+            {busy ? "Loading..." : mode === "login" ? "Log In" : "Create Account"}
+          </button>
+        </form>
 
-          {/* Form */}
-          <form onSubmit={onSubmit} className="space-y-3">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="input input-bordered w-full"
-                autoComplete="email"
-              />
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="input input-bordered w-full"
-                autoComplete={mode === "login" ? "current-password" : "new-password"}
-              />
-            </div>
-
-            <div className="card-actions mt-4">
-              <button
-                type="submit"
-                disabled={busy}
-                className={`btn btn-primary w-full ${busy ? "loading" : ""}`}
-              >
-                {mode === "login" ? "Log in" : "Create account"}
-              </button>
-            </div>
-          </form>
+        <div className="text-center mt-6">
+          <button
+            type="button"
+            onClick={() => setMode(mode === "login" ? "signup" : "login")}
+            className="text-sm text-indigo-300 hover:text-indigo-200 transition mt-2 underline"
+          >
+            {mode === "login" ? "Join the Realm" : "Return to Login"}
+          </button>
         </div>
       </div>
     </main>
