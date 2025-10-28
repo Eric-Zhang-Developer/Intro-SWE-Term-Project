@@ -1,16 +1,12 @@
 export default function TutorialHelloWorld() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
-      {" "}
-      {/* Basic page styling */}
-      <article className="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-md space-y-6">
-        {" "}
-        {/* Container */}
+      <article className="max-w-5xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-md space-y-6">
         {/* Quest Title */}
         <h1 className="text-3xl md:text-4xl font-bold text-indigo-700 border-b pb-2 mb-6">
           Quest: The Oracle&apos;s First Greeting - Whispering &quot;Hello World&quot;
         </h1>
-        {/* Flavor Text / Introduction */}
+        {/* Flavor Text*/}
         <p className="text-lg italic text-gray-600">
           Welcome, brave coder! Your journey into the mystical lands of programming begins now.
           Before you can conjure complex spells or build mighty digital fortresses, every adventurer
@@ -21,6 +17,7 @@ export default function TutorialHelloWorld() {
         <p className="text-gray-700">
           This quest will guide you through understanding and wielding this fundamental magic.
         </p>
+
         <hr className="my-6" />
         {/* Section 1 */}
         <section className="space-y-3">
@@ -42,6 +39,7 @@ export default function TutorialHelloWorld() {
             communicate your intentions to the machine and make it respond.
           </p>
         </section>
+
         <hr className="my-6" />
         {/* Section 2 */}
         <section className="space-y-3">
