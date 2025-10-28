@@ -1,4 +1,7 @@
+"use client";
+
 import BackToDashBoardLink from "@/components/back-to-dashboard-link";
+import YouTube from "react-youtube";
 
 export default function TutorialHelloWorld() {
   return (
@@ -92,6 +95,8 @@ export default function TutorialHelloWorld() {
           </p>
         </section>
         <hr className="my-6" />
+
+        <YouTube videoId="hp4pYFASTrc"></YouTube>
       </article>
     </div>
   );
