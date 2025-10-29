@@ -19,7 +19,6 @@ export default function LandingPage() {
                  bg-[url('/gemininight3.png')] bg-cover bg-center bg-no-repeat text-white overflow-hidden
                  "
     >
-
       {/*welcome text*/}
       <div className="relative z-10 max-w-xl text-center">
         <h1
@@ -42,7 +41,7 @@ export default function LandingPage() {
                 drop-shadow(0 0 10px #a5f3fc)
                 drop-shadow(0 0 20px #93c5fd)
                 drop-shadow(0 0 30px #60a5fa)
-              `
+              `,
             }}
           />
         </div>
